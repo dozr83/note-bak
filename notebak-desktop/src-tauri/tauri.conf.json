@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "note&back",
+  "version": "0.1.0",
+  "identifier": "com.fnote.shell",
+  "build": {
+    "frontendDist": "../web",
+    "devUrl": "http://localhost:1420",
+    "beforeDevCommand": "cd ../web && python3 -m http.server 1420",
+    "beforeBuildCommand": ""
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "label": "main",
+        "title": "note&back",
+        "width": 900,
+        "height": 720,
+        "minWidth": 720,
+        "minHeight": 560,
+        "resizable": true,
+        "maximized": false,
+        "fullscreen": false
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: http://localhost:*; connect-src 'self' http://localhost:* ipc: http://ipc.localhost; frame-src 'self' http://localhost:*"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/icon.png"
+    ],
+    "resources": [
+      "fnote.jar",
+      "jre",
+      "back-tool"
+    ],
+    "category": "Productivity",
+    "shortDescription": "note&back 桌面壳",
+    "longDescription": "note&back 桌面壳，内嵌 Java Spring Boot 服务"
+  }
+}

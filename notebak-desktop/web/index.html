@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>note&back</title>
+    <link rel="stylesheet" href="common/style.css" />
+  </head>
+  <body>
+    <div class="titlebar" data-tauri-drag-region></div>
+    <main class="main">
+      <h2 class="group-title">效率工具</h2>
+      <div class="card-grid">
+        <button class="home-card" id="card-notes" disabled>
+          <svg class="home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span class="home-label">笔记</span>
+          <span class="home-desc" id="notes-desc">启动中…</span>
+        </button>
+        <a class="home-card" href="pyexec/pyexec.html">
+          <svg class="home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <span class="home-label">脚本</span>
+        </a>
+        <button class="home-card" id="card-backtool">
+          <svg class="home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/><path d="M10 12h4"/></svg>
+          <span class="home-label">备份小工具</span>
+          <span class="home-desc" id="backtool-desc">点击打开</span>
+        </button>
+      </div>
+
+      <h2 class="group-title">调试</h2>
+      <div class="card-grid">
+        <button class="home-card" id="card-log">
+          <svg class="home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+          <span class="home-label">服务日志</span>
+        </button>
+      </div>
+    </main>
+    <div id="error" class="error-bar" style="display:none">
+      <span id="error-text"></span>
+      <button id="retry-btn">重试</button>
+    </div>
+    <script src="common/common.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

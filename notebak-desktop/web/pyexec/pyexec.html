@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>脚本执行器</title>
+    <link rel="stylesheet" href="../common/style.css" />
+  </head>
+  <body>
+    <div class="titlebar" data-tauri-drag-region>
+      <div class="nav-pill">
+        <a class="back" href="../index.html" title="返回" aria-label="返回"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></a>
+        <span class="page-title">脚本执行器</span>
+      </div>
+    </div>
+    <main class="main">
+      <div class="row" style="gap:8px;align-items:center;margin-bottom:12px">
+        <span class="mono muted" style="white-space:nowrap">配置路径：</span>
+        <input id="pyexec-conf-input" type="text" autocomplete="off" spellcheck="false" style="flex:1;min-width:0;-webkit-user-select:text;user-select:text;cursor:text" />
+        <button id="pyexec-save-btn" style="white-space:nowrap">保存</button>
+        <button id="pyexec-browse-btn" style="white-space:nowrap">选择</button>
+        <button id="pyexec-reset-btn" style="white-space:nowrap">恢复默认</button>
+        <button id="pyexec-help-btn" style="white-space:nowrap">说明</button>
+      </div>
+      <div class="card">
+        <div id="button-pane" class="row" style="flex-wrap:wrap;gap:8px"></div>
+        <pre id="pyexec-log" class="log">点击按钮执行外部 Python 脚本。</pre>
+      </div>
+    </main>
+    <script src="../common/common.js"></script>
+    <script src="./pyexec.js"></script>
+  </body>
+</html>

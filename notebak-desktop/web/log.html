@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>服务日志</title>
+  <link rel="stylesheet" href="common/style.css">
+</head>
+<body>
+  <div id="log-window">
+    <div class="log-header">
+      <span>服务日志</span>
+    </div>
+    <pre id="log-content"></pre>
+  </div>
+  <script>
+    const { invoke } = window.__TAURI__.core;
+    const { listen } = window.__TAURI__.event;
+    const logContent = document.getElementById('log-content');
+    const MAX_LOG = 2000;
+    let logs = [];
+    let historyReady = false;
+    const pending = [];
+
+    function render() {
+      logContent.textContent = logs.join('\n');
+      logContent.scrollTop = logContent.scrollHeight;
+    }
+
+    listen('server-log', (e) => {
+      // 历史日志回放完成前，先暂存新到的日志
+      if (!historyReady) {
+        pending.push(e.payload);
+        return;
+      }
+      logs.push(e.payload);
+      if (logs.length > MAX_LOG) logs.shift();
+      render();
+    });
+
+    // 回放启动阶段（窗口打开前）的日志
+    invoke('get_server_log').then((history) => {
+      logs = history.concat(pending);
+      if (logs.length > MAX_LOG) logs = logs.slice(-MAX_LOG);
+      pending.length = 0;
+      historyReady = true;
+      render();
+    });
+  </script>
+</body>
+</html>
